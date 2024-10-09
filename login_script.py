@@ -82,6 +82,7 @@ async def main():
             send_pushplus_message(success_message)
         else:
             print(f'serv00账号 {username} 登录失败，请检查serv00账号和密码是否正确。')
+            send_pushplus_message(f'serv00账号 {username} 登录失败，请检查serv00账号和密码是否正确。')
 
         delay = random.randint(1000, 8000)
         await delay_time(delay)
