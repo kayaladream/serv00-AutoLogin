@@ -90,19 +90,21 @@ async def main():
 
 # 发送推送加消息
 def send_pushplus_message(message):
-    url = f"http://www.pushplus.plus/send"
-    payload = {
-        'token': PUSHPLUS_TOKEN,
-        'title': 'serv00账号登录通知',
-        'content': message,
-        'template': 'html'
-    }
-    headers = {
-        'Content-Type': 'application/json'
-    }
-    response = requests.post(url, json=payload, headers=headers)
-    if response.status_code != 200:
-        print(f"发送消息到推送加失败: {response.text}")
+    # Gotify 服务器的地址
+    gotify_url = "http://bark.363738.xyz/message?token=AU-tPr3apId.MQ5"
+    # 你的 Gotify 应用令牌
+    app_token = "AU-tPr3apId.MQ5"
+    # 推送消息的内容
+    within = "fsdfasdfasdf"
+    response = requests.post(
+        gotify_url,
+        json={
+            "app": app_token,
+            "title": "serv00登陆宝货",
+            "message": message,
+            "priority": 5  # 可选，设置通知的优先级
+        }
+    )
 
 # 运行主程序
 asyncio.run(main())
